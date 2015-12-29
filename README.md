@@ -31,7 +31,7 @@ src_ip, URI, timestamp, sent_bytes, received_bytes, speed (bytes/sec)
 ## Screenshots
 
 1. `/status` page:
-![Screenshot1](https://github.com/AlxShcherbak/Netty-httpServer/blob/master/status%20-%20some%20tests%203%20(in%20browser).png
+![Screenshot1](https://github.com/AlxShcherbak/Netty-httpServer/blob/master/status%20-%20some%20tests%203%20(in%20browser).png)
 
 2. ` ab -c 100 -n 10000 http://localhost:8080/status ` result:
 ![Screenshot2](https://github.com/AlxShcherbak/Netty-httpServer/blob/master/ab%20test.png)
