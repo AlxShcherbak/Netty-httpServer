@@ -1,4 +1,5 @@
 # Netty-httpServer
+##Task
 Необходимо реализовать http-сервер на фреймворке netty
 (http://netty.io/), со следующим функционалом:
 
@@ -25,4 +26,18 @@ url, кол-во переадресаций
 
  - в виде таблицы лог из 16 последних обработанных соединений, колонки
 src_ip, URI, timestamp, sent_bytes, received_bytes, speed (bytes/sec)
+
+## Screenshots
+## Screenshots
+
+1. `/status` page:
+![Screenshot1](https://github.com/AlxShcherbak/Netty-httpServer/blob/master/status%20-%20some%20tests%203%20(in%20browser).png
+
+2. ` ab -c 100 -n 10000 http://localhost:8080/status ` result:
+![Screenshot2](https://github.com/AlxShcherbak/Netty-httpServer/blob/master/ab%20test.png)
+
+3. ```/status``` page after ab testing:
+![Screenshot3](https://github.com/AlxShcherbak/Netty-httpServer/blob/master/status%20after%20ab%20test.png)
+
+
 
