@@ -1,6 +1,5 @@
-package httpserver.netty;
+package httpServerNetty;
 
-import httpserver.netty.Server;
 import io.netty.channel.ChannelHandlerContext;
 import io.netty.handler.codec.http.DefaultFullHttpResponse;
 import io.netty.handler.codec.http.FullHttpResponse;

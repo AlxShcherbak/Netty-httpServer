@@ -1,4 +1,4 @@
-package httpserver.netty;
+package httpServerNetty;
 
 import java.net.InetAddress;
 import java.util.Arrays;

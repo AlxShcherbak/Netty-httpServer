@@ -1,4 +1,4 @@
-package httpserver.netty;
+package httpServerNetty;
 
 import com.beust.jcommander.Parameter;
 import com.beust.jcommander.internal.Lists;

@@ -1,4 +1,4 @@
-package httpserver.netty;
+package httpServerNetty;
 
 import com.beust.jcommander.JCommander;
 import org.apache.log4j.BasicConfigurator;
@@ -36,7 +36,7 @@ public class ServerStarter {
         try {
             server.run();
         } catch (InterruptedException e) {
-            logger.info("Error. java.httpserver.netty.Server not started.");
+            logger.info("Error. java.httpserver.httpServerNetty.Server not started.");
             e.printStackTrace();
         }
     }

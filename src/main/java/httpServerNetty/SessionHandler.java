@@ -1,4 +1,4 @@
-package httpserver.netty;
+package httpServerNetty;
 
 import io.netty.buffer.Unpooled;
 import io.netty.handler.codec.http.DefaultFullHttpResponse;

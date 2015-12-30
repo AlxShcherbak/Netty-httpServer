@@ -1,4 +1,4 @@
-package httpserver.netty;
+package httpServerNetty;
 
 import io.netty.bootstrap.ServerBootstrap;
 import io.netty.channel.Channel;
@@ -61,7 +61,7 @@ public class Server {
         serverBootstrap.group(bossGroup, workerGroup).channel(NioServerSocketChannel.class)
                 .childHandler(new ServerInitializer());
         socketChannel = serverBootstrap.bind(port).channel();
-        logger.info("java.httpserver.netty.Server started");
+        logger.info("java.httpserver.httpServerNetty.Server started");
     }
 
     /**
@@ -73,7 +73,7 @@ public class Server {
             cf.awaitUninterruptibly();
         }
         handler.close();
-        logger.info("java.httpserver.netty.Server stopped");
+        logger.info("java.httpserver.httpServerNetty.Server stopped");
         System.exit(0);
     }
 
