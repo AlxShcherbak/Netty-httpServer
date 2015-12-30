@@ -1,5 +1,6 @@
 package httpserver.netty;
 
+import httpserver.netty.Server;
 import io.netty.channel.ChannelHandlerContext;
 import io.netty.handler.codec.http.DefaultFullHttpResponse;
 import io.netty.handler.codec.http.FullHttpResponse;
@@ -14,6 +15,7 @@ import static io.netty.handler.codec.http.HttpVersion.HTTP_1_1;
 
 /**
  * Created by AlxEx on 25.12.2015.
+ * @author AlxEx - Alex Shcherbak
  */
 public class Session {
     /**

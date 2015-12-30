@@ -78,25 +78,27 @@ public class SessionHandler implements Runnable {
             }
 
             // Обработка запроса /hello.
-            if (session.getCommand().equalsIgnoreCase("/hello")) {
-                sendHello(session);
-            } else {
-                // Обработка запроса /status.
-                if (session.getCommand().equalsIgnoreCase("/status")) {
-                    sendStatus(session);
+            if (session != null) {
+                if (session.getCommand().equalsIgnoreCase("/hello")) {
+                    sendHello(session);
                 } else {
-                    // Обработка запроса /stop.
-                    if (session.getCommand().equalsIgnoreCase("/stop")) {
-                        Server.stop();
+                    // Обработка запроса /status.
+                    if (session.getCommand().equalsIgnoreCase("/status")) {
+                        sendStatus(session);
                     } else {
-                        // Обработка запроса /redirect.
-                        if (session.getCommand().length() > 13
-                                && session.getCommand().substring(0, 14)
-                                .equalsIgnoreCase("/redirect?url=")) {
-                            sendRedirect(session);
+                        // Обработка запроса /stop.
+                        if (session.getCommand().equalsIgnoreCase("/stop")) {
+                            Server.stop();
                         } else {
-                            // Обработка других запросов.
-                            send404NotFound(session);
+                            // Обработка запроса /redirect.
+                            if (session.getCommand().length() > 13
+                                    && session.getCommand().substring(0, 14)
+                                    .equalsIgnoreCase("/redirect?url=")) {
+                                sendRedirect(session);
+                            } else {
+                                // Обработка других запросов.
+                                send404NotFound(session);
+                            }
                         }
                     }
                 }
@@ -175,7 +177,7 @@ public class SessionHandler implements Runnable {
         }
         // Кол-во открытых соединений.
         status.append("\nКол-во текущих соединений: ")
-                .append(Server.statistic.getCurrentConnection())
+                .append(Statistic.getCurrentConnection())
                 .append("\n");
         // Статус последних 16 закрытых соединений.
         status.append("\nСтатус последних 16 сессий:\n");
@@ -208,10 +210,9 @@ public class SessionHandler implements Runnable {
     }
 
     private void send404NotFound(Session session) {
-        StringBuilder status = new StringBuilder();
-        status.append("404 Not Found");
+        String status = "404 Not Found";
         FullHttpResponse response = new DefaultFullHttpResponse(HTTP_1_1, OK,
-                Unpooled.copiedBuffer(status.toString(),
+                Unpooled.copiedBuffer(status,
                         Charset.forName("UTF-8")));
         response.headers().set(CONTENT_LENGTH,
                 response.content().readableBytes());

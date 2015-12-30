@@ -7,6 +7,8 @@ import org.apache.log4j.Logger;
 
 /**
  * Created by AlxEx on 29.12.2015.
+ *
+ * @author AlxEx - Alex Shcherba
  */
 public class ServerStarter {
     private static Logger logger = Logger.getLogger(ServerStarter.class);

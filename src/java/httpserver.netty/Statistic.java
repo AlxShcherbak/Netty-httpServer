@@ -1,6 +1,7 @@
 package httpserver.netty;
 
 import java.net.InetAddress;
+import java.util.Arrays;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.ConcurrentLinkedDeque;
 import java.util.concurrent.ConcurrentMap;
@@ -13,7 +14,7 @@ import java.util.concurrent.atomic.AtomicLong;
  * @author AlxEx - Alex Shcherbak
  */
 public class Statistic {
-    private static Statistic statistic = new Statistic();
+    private static final Statistic statistic = new Statistic();
 
     public static Statistic getStatistic() {
         return statistic;
@@ -53,6 +54,8 @@ public class Statistic {
         /**
          * @param key - ip address of session
          * @param value - request counter
+         * @return the previous value associated with {@code key}, or
+         *         {@code null} if there was no mapping for {@code key}
          */
         @Override
         public RequestCounter put(InetAddress key, RequestCounter value) {
@@ -66,7 +69,8 @@ public class Statistic {
         /**
          * @param key - url address of redirect
          * @param value - number of redirects to this url
-         * @return
+         * @return the previous value associated with {@code key}, or
+         *         {@code null} if there was no mapping for {@code key}
          */
         @Override
         public Integer put(String key, Integer value) {
@@ -75,35 +79,35 @@ public class Statistic {
     };
 
     /**
-     * метод добавления новой сессии в статистику
+     * Обработка сессии - добавление ее в статистику
      *
      * @param session - сессия для обработки
      */
     public synchronized void addConnection(Session session) {
         // добавление сессии в список последних 16 активных сессий
-        this.statistic.lastConnection.addFirst(session);
+        statistic.lastConnection.addFirst(session);
         // инкриминтация общего количества соединений
-        this.statistic.totalConnectionsNumber.incrementAndGet();
+        statistic.totalConnectionsNumber.incrementAndGet();
         // добавление информации про сессию в список уникальных сессий
-        this.statistic.uniqueRequests.put(session.remoteAddress.getAddress(), new RequestCounter(session));
+        statistic.uniqueRequests.put(session.remoteAddress.getAddress(), new RequestCounter(session));
         // добавление информации про сессию в список url переадресаций
-        this.statistic.urlRedirects.put(session.getCommand(), 1);
+        statistic.urlRedirects.put(session.getCommand(), 1);
     }
 
     public ConcurrentLinkedDeque<Session> getLastConnection() {
-        return this.statistic.lastConnection;
+        return statistic.lastConnection;
     }
 
     public int getTotalConnectionsNumber() {
-        return this.statistic.totalConnectionsNumber.get();
+        return statistic.totalConnectionsNumber.get();
     }
 
     public ConcurrentMap<InetAddress, RequestCounter> getUniqueRequests() {
-        return this.statistic.uniqueRequests;
+        return statistic.uniqueRequests;
     }
 
     public ConcurrentMap<String, Integer> getUrlRedirects() {
-        return this.statistic.urlRedirects;
+        return statistic.urlRedirects;
     }
 
     /**
@@ -188,7 +192,7 @@ public class Statistic {
          */
         @Override
         public int hashCode() {
-            return ipAddress != null ? 31 * ipAddress.getAddress().hashCode() : 0;
+            return ipAddress != null ? 31 * Arrays.hashCode(ipAddress.getAddress()) : 0;
         }
     }
 }

@@ -12,19 +12,19 @@ import java.util.List;
  */
 public class JCommanderOptions {
     /**
-     * лист неопознаных атребутов
+     * лист неопознаных аргументов
      */
     @Parameter
     public List<String> parameters = Lists.newArrayList();
 
     /**
-     * атребут запуска программмы, порт
+     * аргумент запуска программмы, порт
      */
     @Parameter(names = "-port", description = "connection port number")
     public int port = 8080; // default value 8080
 
     /**
-     * атребут запуска программы, количество потоков паралельной оброботки
+     * аргумент запуска программы, количество потоков паралельной оброботки
      */
     @Parameter(names = "-threads", description = "calculated threads number")
     public int threads = 100; // default value 100

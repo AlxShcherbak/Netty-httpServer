@@ -7,6 +7,8 @@ import io.netty.channel.socket.SocketChannel;
 
 /**
  * Created by AlxEx on 25.12.2015.
+ *
+ * @author AlxEx - Alex Shcherbak
  */
 public class ServerInitializer extends ChannelInitializer<SocketChannel> {
     @Override
