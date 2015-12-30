@@ -18,7 +18,7 @@ public class ServerStarter {
         logger.setLevel(Level.INFO);
         BasicConfigurator.configure();
 
-        // Парсинг аргументов командной строки.
+        // РџР°СЂСЃРёРЅРі Р°СЂРіСѓРјРµРЅС‚РѕРІ РєРѕРјР°РЅРґРЅРѕР№ СЃС‚СЂРѕРєРё.
         JCommanderOptions options = new JCommanderOptions();
         new JCommander(options, args);
 
@@ -31,7 +31,7 @@ public class ServerStarter {
         logger.info("threads number : " + numThreads);
 
 
-        // Запуск сервера.
+        // Р—Р°РїСѓСЃРє СЃРµСЂРІРµСЂР°.
         Server server = new Server(port, numThreads);
         try {
             server.run();
