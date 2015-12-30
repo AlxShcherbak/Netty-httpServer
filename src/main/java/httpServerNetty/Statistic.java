@@ -78,7 +78,13 @@ public class Statistic {
          */
         @Override
         public Integer put(String key, Integer value) {
-            return super.put(key, containsKey(key) ? get(key) + 1 : 1);
+            if (containsKey(key)) {
+                synchronized (this) {
+                    return super.put(key, get(key) + 1);
+                }
+            } else {
+                return super.put(key, 1);
+            }
         }
     };
 
