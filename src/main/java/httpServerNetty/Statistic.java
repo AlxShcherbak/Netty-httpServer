@@ -59,7 +59,11 @@ public class Statistic {
          */
         @Override
         public RequestCounter put(InetAddress key, RequestCounter value) {
-            return super.put(key, containsKey(key) ? get(key).addRequest(value) : value);
+            if (containsKey(key)) {
+                synchronized (this) {
+                    return super.put(key, get(key).addRequest(value));
+                }
+            } else return super.put(key, value);
         }
     };
     /**
