@@ -57,7 +57,7 @@ src_ip, URI, timestamp, sent_bytes, received_bytes, speed (bytes/sec)
 `class JCommanderOptions` - класс карта для парсеринга (разбора) аргументов запуска программы
 
 ## How to build
-use maven command - mvn compile assembly:single
+use maven command - `mvn compile assembly:single`
 в папке target появиться исполнительный .jar файл - `Netty-httpServer.jar` при запуске которого запускаеться сервер. Чтоб завершить работу сервера необходимо ввести запрос - /stop
 
 
