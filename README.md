@@ -36,7 +36,7 @@ src_ip, URI, timestamp, sent_bytes, received_bytes, speed (bytes/sec)
 ![Screenshot2](https://github.com/AlxShcherbak/Netty-httpServer/blob/master/ab%20test.png)
 
 3. `ab -l -c 100 -n 10000 http://localhost:8080/status` ressalt:
-![Screenshot2](https://github.com/AlxShcherbak/Netty-httpServer/blob/master/ab%20-l%20-c%20100%20-n%2010000%20test.png)
+![Screenshot2](https://github.com/AlxShcherbak/Netty-httpServer/blob/master/ab%20-l%20-c%20100%20-n%2010000%20test%20result.png)
 
 4. ```/status``` page after ab testing:
 ![Screenshot3](https://github.com/AlxShcherbak/Netty-httpServer/blob/master/status%20after%20ab%20test.png)
